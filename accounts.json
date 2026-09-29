@@ -1,6 +1,6 @@
 {
   "_comment": "Space 版账号表。与线上退役 zcode/accounts.json 的差异:proxy_bin=相对路径的官方 linux-x64 构建;infinilux2+gh2888cjr6 两个号启用、watt+4g38nglho4 关闭(Render 免费档 512MB 内存,4 引擎装不下,2 号互为备份);gateway.port 由 entrypoint 按 $PORT 改写(Render 注入平台端口)。加号:恢复 enabled=true 并确认内存余量。",
-  "pool_dir": "%USERPROFILE%\\.zcode-pool\\accounts",
+  "pool_dir": "%USERPROFILE%/.zcode-pool/accounts",
   "proxy_bin": "bin/zcode-proxy",
   "app_version": "3.14.3",
   "models": [
