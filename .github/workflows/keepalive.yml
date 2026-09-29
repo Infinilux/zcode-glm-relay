@@ -1,0 +1,27 @@
+name: keepalive
+# Render 免费档 15 分钟无流量就休眠(唤醒冷启动 30 秒+)。
+# 这个 workflow 每 10 分钟 ping 一次 /health,把服务钉在常驻状态。
+# 注意:GitHub 会在仓库 60 天无提交后自动停用定时 workflow —— 到期进 Actions
+# 页面点一下 "Enable",或随便推一个提交。
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch: {}
+
+permissions: {}
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ping /health
+        run: |
+          for i in 1 2 3; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 60 "${{ secrets.RELAY_URL }}/health" || echo 000)
+            echo "attempt $i -> $code"
+            [ "$code" = "200" ] && exit 0
+            sleep 20
+          done
+          echo "::warning::health ping failed 3 times (service may be down)"
+          exit 0

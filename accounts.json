@@ -1,0 +1,45 @@
+{
+  "_comment": "Space 版账号表。与线上退役 zcode/accounts.json 的差异:proxy_bin=相对路径的官方 linux-x64 构建;infinilux2+gh2888cjr6 两个号启用、watt+4g38nglho4 关闭(Render 免费档 512MB 内存,4 引擎装不下,2 号互为备份);gateway.port 由 entrypoint 按 $PORT 改写(Render 注入平台端口)。加号:恢复 enabled=true 并确认内存余量。",
+  "pool_dir": "%USERPROFILE%\\.zcode-pool\\accounts",
+  "proxy_bin": "bin/zcode-proxy",
+  "app_version": "3.14.3",
+  "models": [
+    "glm-5.3",
+    "glm-5.3-flash"
+  ],
+  "gateway": {
+    "port": 3203,
+    "name": "zcode",
+    "dir": "gateway"
+  },
+  "instances": [
+    {
+      "name": "infinilux2",
+      "accountId": "cd446e24-c987-4948-8f4d-edce3e1dd374",
+      "port": 3231,
+      "dir": "accounts/infinilux2",
+      "enabled": true
+    },
+    {
+      "name": "watt",
+      "accountId": "de0c655f-1fa2-47d3-9d5a-fb3a4b3ec843",
+      "port": 3232,
+      "dir": "accounts/watt",
+      "enabled": false
+    },
+    {
+      "name": "gh2888cjr6",
+      "accountId": "492e6e6a-3679-4a23-99e8-52f0dbd4b023",
+      "port": 3233,
+      "dir": "accounts/gh2888cjr6",
+      "enabled": true
+    },
+    {
+      "name": "4g38nglho4",
+      "accountId": "61a24a6a-702a-4c06-8a17-9d1e18d4100b",
+      "port": 3234,
+      "dir": "accounts/4g38nglho4",
+      "enabled": false
+    }
+  ]
+}
